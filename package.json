@@ -1,0 +1,33 @@
+{
+  "name": "cutline-mma",
+  "version": "12.2.0",
+  "private": true,
+  "type": "module",
+  "engines": {
+    "node": ">=22.12.0"
+  },
+  "scripts": {
+    "dev": "vite --host 0.0.0.0",
+    "build:client": "vite build",
+    "build:pages-worker": "esbuild worker.ts --bundle --format=esm --platform=browser --target=es2022 --outfile=dist/_worker.js",
+    "build": "npm run build:client && npm run build:pages-worker",
+    "typecheck": "tsc --noEmit",
+    "smoke": "node --experimental-strip-types smoke-test.mjs",
+    "check": "npm run typecheck && npm run build && npm run smoke",
+    "deploy": "wrangler deploy"
+  },
+  "dependencies": {
+    "lucide-react": "0.576.0",
+    "react": "19.2.8",
+    "react-dom": "19.2.8"
+  },
+  "devDependencies": {
+    "@types/react": "19.2.18",
+    "@types/react-dom": "19.2.5",
+    "@vitejs/plugin-react": "5.2.0",
+    "esbuild": "0.25.12",
+    "typescript": "5.9.3",
+    "vite": "7.3.6",
+    "wrangler": "4.129.0"
+  }
+}

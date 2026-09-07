@@ -1,0 +1,23 @@
+CUTLINE v12.2 Cloudflare安全版
+
+【GitHub】
+1. ZIPを解凍
+2. 中のファイルを全部選択
+3. GitHubリポジトリ直下へアップロード
+4. 余計な親フォルダは作らない
+
+【推奨：Cloudflare Workers】
+1. Workers & Pages → Create application → Import a repository
+2. 対象GitHubリポジトリを選択
+3. Worker名は cutline-mma
+4. Build command は空欄
+5. Deploy command は npx wrangler deploy
+6. Root directory は空欄
+7. Save and Deploy
+
+【もし Build output directory が表示される画面なら Pages】
+Build command: npm run build
+Build output directory: dist
+Root directory: 空欄
+
+Pages利用時だけ、デプロイ後にD1 Bindingを DB という名前で追加してください。

@@ -1,0 +1,17 @@
+CUTLINE v12.2 確認結果（2026-09-08）
+
+PASS 1: worker.ts / nutrition.ts / cutline-metrics.ts / food-ai.ts / health.ts のTypeScript静的チェック
+PASS 2: React側ソースのTypeScript構文・内部参照チェック（外部型はテスト用スタブ）
+PASS 3: Worker runtime smoke test
+  - D1未設定時: 503 + D1設定案内を返す
+  - D1が存在し未ログイン時: 401を返す
+  - 通常ページ: ASSETS bindingへ転送して200を返す
+PASS 4: 必須ファイル・Cloudflare設定・/api/* routing の自動チェック
+PASS 5: Pages用 dist/_worker.js を生成するbuild手順を追加
+PASS 6: Workers側で _worker.js / _headers を静的公開しない .assetsignore を追加
+PASS 7: D1 bindingをIDなしの自動プロビジョニング形式へ変更
+
+実行環境の制限:
+- npm install も実際に試行したが、この検証環境から registry.npmjs.org へのDNS解決が EAI_AGAIN で遮断されたため、依存パッケージのダウンロードと完全なVite buildはここでは実行できなかった。
+- これはpackage.jsonの依存バージョンエラーではなく、この検証環境の外部ネットワーク制限。
+- Cloudflare側は通常、依存関係をインストールしてビルドするため、GitHubへアップロード後にCloudflare Build Historyで最終確認する。
