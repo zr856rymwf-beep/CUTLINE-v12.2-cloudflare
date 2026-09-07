@@ -1,24 +1,30 @@
 {
   "$schema": "./node_modules/wrangler/config-schema.json",
-  "name": "cutline-mma",
+  "name": "cutline-v12-2-cloudflare",
   "main": "./worker.ts",
   "compatibility_date": "2026-09-08",
   "workers_dev": true,
   "keep_vars": true,
+
   "assets": {
     "directory": "./dist",
     "binding": "ASSETS",
     "not_found_handling": "single-page-application",
     "run_worker_first": ["/api/*"]
   },
+
   "d1_databases": [
     {
-      "binding": "DB"
+      "binding": "DB",
+      "database_name": "cutline-v12-2-cloudflare-db",
+      "database_id": "9fbecde9-5c1e-4ec9-80b2-219bbfd8d092"
     }
   ],
+
   "build": {
     "command": "npm run build"
   },
+
   "observability": {
     "enabled": true
   }
